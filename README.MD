@@ -1,4 +1,4 @@
-# Before to use this appkication, you need to install the following packages:
+# Before to use this application, you need to install the following packages:
 ## install sequelize cli as global package
 ```bash
 $ sudo npm i -g sequelize-cli
