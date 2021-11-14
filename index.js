@@ -1,9 +1,13 @@
 const routes = require('./routes')
 const Hapi = require('hapi')
+require('dotenv').config()
 
 const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
+    port: process.env.APP_PORT || 3000,
+    host: process.env.APP_HOST || 'localhost',
+    routes: {
+        cors: true
+    }
 })
 
 server.route(routes)
