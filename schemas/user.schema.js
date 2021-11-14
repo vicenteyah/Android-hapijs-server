@@ -1,6 +1,7 @@
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
+
 module.exports = {
-    payload: Joi.object({
+    userSchema: Joi.object({
         name: Joi.string().optional(),
         lastName: Joi.string().optional(),
         address: Joi.string().optional(),

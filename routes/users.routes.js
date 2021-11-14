@@ -1,4 +1,4 @@
-const userSchema = require('../schemas/user.schema')
+const { userSchema } = require('../schemas/user.schema')
 const handlers = require('../handlers/user.handler')
 
 module.exports = [  
@@ -12,14 +12,8 @@ module.exports = [
         path: '/v1/users',
         handler: handlers.createUser,
         options: {
-            validate:{
-                payload: userSchema.payload,
-                failAction:(req,h,error) => {
-                    return error.isJoi 
-                    ? h.response(error.details[0]).takeover()
-                    : h.response(error).takeover()
-                }
-            }
+            payload: userSchema.validate(),
+
         }
     },
     {
@@ -27,14 +21,7 @@ module.exports = [
         path: '/v1/users/{uuid}',
         handler: handlers.updateUser,
         options: {
-            validate:{
-                payload: userSchema.payload,
-                failAction:(req,h,error) => {
-                    return error.isJoi 
-                    ? h.response(error.details[0]).takeover()
-                    : h.response(error).takeover()
-                }
-            }
+            payload: userSchema.validate(),
         }
     },
     {
